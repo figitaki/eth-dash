@@ -47,6 +47,16 @@ const SyncStatus = ({ status, onReload }) =>
       <StatusCard onClick={onReload}>
         <SpinningIcon src={syncIcon} alt="Sync icon" />
         <Text margin="0 0 8px">Syncing</Text>
+        {status.warpChunksProcessed &&
+          status.warpChunksAmount && (
+            <div>
+              <Stat
+                label="Chunks processed"
+                value={status.warpChunksProcessed}
+              />
+              <Stat label="Total chunks" value={status.warpChunksAmount} />
+            </div>
+          )}
         <Stat label="Current block" value={status.currentBlock} />
         <Stat label="Highest block" value={status.highestBlock} />
       </StatusCard>
